@@ -8,6 +8,7 @@ For kubernetes
   kubectl apply -f ./deployment.yml -n exist_ns
 ```
 _Need to change hostname in ingress example_
+
 For standalone
 ```
  docker-compose up -d svn
