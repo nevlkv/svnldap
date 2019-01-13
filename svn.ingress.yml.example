@@ -1,0 +1,27 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: example-class
+    ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /svn
+    nginx.ingress.kubernetes.io/proxy-body-size: "2048m"
+  generation: 1
+  name: svn
+spec:
+  rules:
+  - host: svn.example.com
+    http:
+      paths: 
+      - path: /svn
+        backend:
+          serviceName: svn
+          servicePort: 80
+
+  tls:
+  - hosts:
+    - svn.svn.example.com
+    secretName: svn.example.com-tls
+

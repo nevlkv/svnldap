@@ -1,0 +1,13 @@
+version: '2'
+services:
+  svn:
+    image: mikolaw/svnldap:latest
+    ports:
+      - 80:80
+    volumes:
+      - /tmp/svn:/opt
+    environment:
+     AuthLDAPBindDN: "uid=example,dc=example,dc=com"
+     AuthLDAPBindPassword: "strong_password"
+     AuthLDAPURL: "ldap://your.ldap.server:389/ou=people,dc=example,dc=com?uid?sub?(objectClass=*)"
+     LdapGroup: "cn=group_of_allowed_to_modify_users,ou=groups,dc=example,dc=com"
